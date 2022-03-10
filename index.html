@@ -1,0 +1,145 @@
+<html lang="en">
+	<head>
+		<title>Option Pricer</title>
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="icon" type="image/png" href="img/icon.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<a name="top"></a>
+		<div class="full-width" id="top_bar">
+			<div id="header">
+				<div id="title">Option Pricer</div>
+			</div>
+		</div>
+		<div class="full-width" id="body">
+			<form>
+				<div class="option">
+					<input type="radio" name="optionType" class="switch" value="eu" data-show="European" checked>
+					<input type="radio" name="optionType" class="switch" value="ga" data-show="Geometric Asian">
+					<input type="radio" name="optionType" class="switch" value="aa" data-show="Arithmetic Asian">
+					<input type="radio" name="optionType" class="switch" value="am" data-show="American">
+					<input type="radio" name="optionType" class="switch" value="vo" data-show="Volatility">
+				</div>
+				<div data-show="eu,ga,aa,am,vo" data-show-calc="true" data-calc-type="1">
+					<em>Spot Price</em>
+					<div class="field">
+						<div class="unit" data-position="left">$</div>
+						<input name="spotPrice" pattern="\d+(\.\d+)?" required>
+					</div>
+				</div>
+				<div data-show="eu,ga,aa,am">
+					<em>Volatility</em>
+					<div class="field">
+						<input name="volatility" pattern="\d+(\.\d+)?" required>
+						<div class="unit" data-position="right">%</div>
+					</div>
+				</div>
+				<div data-show="eu,ga,aa,am,vo">
+					<em>Risk-free Interest Rate</em>
+					<div class="field">
+						<input name="interestRate" pattern="\d+(\.\d+)?" required>
+						<div class="unit" data-position="right">%</div>
+					</div class="field">
+				</div>
+				<div data-show="vo">
+					<em>Repo Rate</em>
+					<div class="field">
+						<input name="repoRate" pattern="\d+(\.\d+)?" required>
+						<div class="unit" data-position="right">%</div>
+					</div>
+				</div>
+				<div data-show="eu,ga,aa,am,vo" data-show-calc="true" data-calc-type="2">
+					<em>Time to Maturity</em>
+					<div class="field">
+						<input name="maturity" pattern="\d+(\.\d+)?" required>
+						<div class="unit" data-position="right">years</div>
+					</div>
+				</div>
+				<div data-show="eu,ga,aa,am,vo" data-show-calc="true" data-calc-type="1">
+					<em>Strike Price</em>
+					<div class="field">
+						<div class="unit" data-position="left">$</div>
+						<input name="strikePrice" pattern="\d+(\.\d+)?" required>
+					</div>
+				</div>
+				<div data-show="ga,aa,am">
+					<em>Number of Steps/Observations</em>
+					<div class="field">
+						<input name="steps" pattern="\d+" required>
+					</div>
+				</div>
+				<div data-show="aa">
+					<em>Number of Paths</em>
+					<div class="field">
+						<input name="paths" pattern="\d+" required>
+					</div>
+				</div>
+				<div data-show="vo">
+					<em>Option Premium</em>
+					<div class="field">
+						<div class="unit" data-position="left">$</div>
+						<input name="premium" pattern="\d+(\.\d+)?" required>
+					</div>
+				</div>
+				<div data-show="aa">
+					<em>Control Variate</em>
+					<div class="field">
+						<input type="radio" name="control" class="switch" value="0" data-show="No" checked>
+						<input type="radio" name="control" class="switch" value="1" data-show="Yes">
+					</div>
+				</div>
+				<div data-show="eu,ga,aa,am,vo">
+					<em>Option Type</em>
+					<div class="field">
+						<input type="radio" name="call" class="switch" value="1" data-show="Call" checked>
+						<input type="radio" name="call" class="switch" value="0" data-show="Put">
+					</div>
+				</div>
+				<button>Calculate</button>
+			</form>
+			<form class="sub-calc" data-calc-type="1">
+				<div class="close">&times;</div>
+				<input name="target" class="hidden">
+				<div>
+					<em>Stock Price</em>
+					<div class="field">
+						<input name="stockPrice" pattern="\d+(\.\d+)?" required>
+					</div>
+				</div>
+				<div data-show="eu,ga,aa,am">
+					<em>Redemption Rate</em>
+					<div class="field">
+						<input name="redemptionRate" pattern="\d+(\.\d+)?" required>
+						<div class="unit" data-position="right">:1</div>
+					</div>
+				</div>
+				<button>Calculate</button>
+			</form>
+			<form class="sub-calc" data-calc-type="2">
+				<div class="close">&times;</div>
+				<input name="target" class="hidden">
+				<div>
+					<em>Maturity Date</em>
+					<div class="field">
+						<input name="maturityDate" pattern="\d{4}-\d{2}-\d{2}" required>
+					</div>
+				</div>
+				<button>Calculate</button>
+			</form>
+			<div id="result">
+				<em>Result</em>
+				<div>$xxxx</div>
+			</div>
+		</div>
+		<div class="footer2">
+			<div class="full-width">
+				Copyright &copy; 2020 Ng Koon Hang (3035101554) | All rights reserved.
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/calc.js"></script>
+</html>
