@@ -26,7 +26,7 @@ $("*[data-show-calc]").each(function() {
 		e.preventDefault();
 		e.stopPropagation();
 		var xpos = window.innerWidth - _this.getBoundingClientRect().right;
-		var ypos = _this.getBoundingClientRect().top;
+		var ypos = _this.getBoundingClientRect().top + window.scrollY;
 		document.forms[calcType].style.top = "calc(" + ypos + "px)";
 		document.forms[calcType].style.right = "calc(" + xpos + "px + 2em)";
 		document.forms[calcType].target.value = target;
