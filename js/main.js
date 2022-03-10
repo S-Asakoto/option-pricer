@@ -17,8 +17,7 @@ changeType();
 $("*[data-show-calc]").each(function() {
 	var calcType = +this.dataset.calcType;
 	var target = $("input", this)[0].name;
-	var xpos = window.innerWidth - this.getBoundingClientRect().right;
-	var ypos = this.getBoundingClientRect().top;
+	var _this = this;
 
 	var calcBtn = document.createElement("button");
 	calcBtn.classList.add("calc-btn");
@@ -26,6 +25,8 @@ $("*[data-show-calc]").each(function() {
 	calcBtn.onclick = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
+		var xpos = window.innerWidth - _this.getBoundingClientRect().right;
+		var ypos = _this.getBoundingClientRect().top;
 		document.forms[calcType].style.top = "calc(" + ypos + "px)";
 		document.forms[calcType].style.right = "calc(" + xpos + "px + 2em)";
 		document.forms[calcType].target.value = target;
